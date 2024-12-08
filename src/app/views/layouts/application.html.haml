@@ -6,10 +6,12 @@
     %meta{charset:"UTF-8"}
     = csrf_meta_tags
     = csp_meta_tag
-    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"}
-    %link{rel: "stylesheet", href:"https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css", integrity:"sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls", crossorigin:"anonymous"}
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    //%script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"}
     = javascript_importmap_tags
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    %script{ src: "https://unpkg.com/slim-select@latest/dist/slimselect.min.js" }
+    = stylesheet_link_tag "https://unpkg.com/slim-select@latest/dist/slimselect.css", rel: "stylesheet"
+
   %body
     - unless devise_controller?
       %div#flash-messages

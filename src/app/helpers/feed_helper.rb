@@ -2,7 +2,7 @@ module FeedHelper
 
   def matching_percentage(job)
     @user_skills ||= return_user_skills
-    job_skills = job.skills.pluck(:id)
+    job_skills = job.skills.all.pluck(:id)
     matching_skills = @user_skills & job_skills
     if job_skills && @user_skills
       percentage = (matching_skills.length.to_f / job_skills.length) * 100

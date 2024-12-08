@@ -1,5 +1,5 @@
-- company = CompanyInformation.find_by(user_id: job.user_id)
-- company_name = company.name
+- company_information = CompanyInformation.find_by(user_id: job.user_id)
+- company_name = company_information.name
 
 - applied = false
 - @application = nil
@@ -10,13 +10,12 @@
       - applied = true
       - break
 
-%h2
-  by: 
-  = link_to company_name, view_company_profile_path(id: company.id), class: 'job-link'
-
-//date for jobs on company profile
-- if controller_name == 'profile'
-  = job.created_at.strftime('%d-%b-%y')
+- if controller_name == 'home'
+  %h2
+    by: 
+    = link_to company_name, view_company_profile_path(id: job.user.id), class: 'job-link underline'
+- else
+  %div.member= "#{job.created_at.strftime('%d-%b-%y')}"
 
 %p.job-info
   Description:
@@ -47,12 +46,13 @@
     %p.job-info Application viewed
 
   - elsif applied == false
+    
     %button.apply-button{ style: "width: fit-content; padding: 0 15px;", onclick: "toggleChooseCV(this);" } Apply
     %div.choose-cv{style: 'display: none;'}
       - if current_user.cvs.any? && current_user.user_information.present?
-        Choose CV
+        %p Choose CV
         - current_user.cvs.each do |cv|
-          = button_to cv.title, apply_to_job_profile_path(job_id: job.id, cv_id: cv.id), class: 'cv-select', remote: true
+          = button_to cv.title, apply_to_job_profile_path(job_id: job.id, cv_id: cv.id), class: 'apply-button', remote: true
       - else
         = link_to "Add Cv & Contact Info", profile_index_path
 

@@ -1,1 +1,5 @@
-$(".applications").html("<%= j render 'job_applications/job_application', job: @job %>");
+<% if @back %>
+  $(".job-<%= @job.id %>").html("<%= j render 'job', job: @job %>")
+<% else %>
+  $(".job-<%= @job.id %>").html("<%= j render 'job_applications/job_application', job: @job, liked: @liked %>");
+<% end %>

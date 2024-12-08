@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get 'render_create'
       get 'view_applications'
       get 'view_application_details'
+      patch 'like_cv'
     end
   end
   get '/feed', to: 'home#feed'

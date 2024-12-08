@@ -23,6 +23,11 @@
     align-content: center;
  }
 
+ :root{
+  --ss-primary-color: #9754cb!important;
+  --ss-focus-color: #9754cb!important;
+ }
+
  @font-face {
    font-family: 'GothamPro-Medium';
    src: font-url("GothamPro-Medium.woff");
@@ -67,7 +72,7 @@
   font-family:'GothamPro'; 
   color:#000; 
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: bold!important;
 }
 
 .text-subtitle{
@@ -84,4 +89,13 @@
 
 .red{
   color: red !important;
+}
+
+.purple-link{
+  color: #9754cb;
+  text-decoration: none;
+}
+
+.underline:hover{
+  text-decoration: underline !important;
 }

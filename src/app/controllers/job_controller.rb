@@ -104,6 +104,8 @@ class JobController < ApplicationController
 
   def view_applications
     @job = Job.find(params[:id])
+    @back = params[:back] || false
+    @liked = params[:liked] || false
     respond_to do |f|
       f.js
     end
@@ -111,13 +113,21 @@ class JobController < ApplicationController
 
   def view_application_details
     @app = Application.find(params[:id])
-    @app.update(viewed: true)
-
-    UserMailer.send_application_status(@app).deliver_now
+    
+    if @app.viewed == false
+      @app.update(viewed: true)
+      UserMailer.send_application_status(@app).deliver_later
+    end
 
     respond_to do |f|
       f.js
     end
+  end
+
+  def like_cv
+    @app = Application.find(params[:id])
+    liked = !@app.liked
+    @app.update(liked: liked)
   end
 
 private

@@ -1,6 +1,6 @@
 class CvController < ApplicationController
   before_action :check_user
-  before_action :set_cv, except: [:index, :new, :create, :configure_cv, :destroy]
+  before_action :set_cv, except: [:index, :new, :create, :configure_cv, :destroy, :add_skills]
 
   def index
     @cv = current_user.cvs.all.includes(:skills, :education, :experience)
@@ -91,9 +91,10 @@ class CvController < ApplicationController
   end
 
   def add_skills
-    
+    @cv = Cv.find(params[:id])
     @cv.skills.destroy_all
-    selected_skill_ids = cv_params[:skill_ids]
+
+    selected_skill_ids = params[:skill_ids]
   
     if selected_skill_ids.present?
       selected_skills = Skill.where(id: selected_skill_ids)
@@ -174,7 +175,7 @@ class CvController < ApplicationController
 
   def upload_picture
     if params[:cv].present? && params[:cv][:picture].present?
-      @cv.picture.destroy_all
+      @cv.picture.destroy
       @cv.picture.attach(params[:cv][:picture])
       flash[:success] = "Picture uploaded."
       redirect_to configure_cv_cv_path(@cv.id)

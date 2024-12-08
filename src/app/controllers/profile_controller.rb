@@ -13,7 +13,7 @@ class ProfileController < ApplicationController
       
     else
       @applications = Application.where(cv_id: current_user.cvs.pluck(:id)).includes(:cv, :job).order(created_at: :desc)
-      @applications = Kaminari.paginate_array(@applications).page(params[:page]).per(2)
+      @applications = Kaminari.paginate_array(@applications).page(params[:page]).per(6)
 
       @cvs = current_user.cvs.all
       @new_cv = Cv.new
@@ -73,10 +73,15 @@ class ProfileController < ApplicationController
       return
     end
 
-    @jobs = @company.jobs.all
-
-    if params[:search].present?
-      @jobs = @jobs.where("title ILIKE ?", "%#{params[:search]}%")
+    @jobs = @company.jobs.all.order(created_at: :asc)
+    
+    if params[:search].present? || params[:filter_skills].present?
+      @jobs = @jobs.where("jobs.title ILIKE ?", "%#{params[:search]}%").distinct if params[:search].present?
+      
+      if params[:filter_skills].present?
+        filter_skill_ids = params[:filter_skills].split(',')
+        @jobs = @jobs.joins(:skills).where(skills: {id: params[:filter_skills]}).distinct if params[:filter_skills].present?
+      end
     end
 
     @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(3)

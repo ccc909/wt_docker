@@ -16,6 +16,25 @@
     color: #000;
   }
 
+  .company-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0;
+    padding-bottom: 40px;
+    padding-left: 20px;
+  }
+
+  .company-info-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  img.company-picture {
+    width: 150px;
+    height: 150px;
+  }
+
   .job-feed p {
     font-size: 1rem;
     font-family: 'GothamPro-Medium';
@@ -42,10 +61,38 @@
     border-radius: 20px;
   }
 
-  ul {
+  .job-ul {
     list-style-type: none; 
     padding: 10px 15px;
     margin: 0;
+  }
+
+  .job-img-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .job-title-container {
+    padding-left: 10px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .member {
+    margin: 0;
+    font-size: 1rem;
+    font-family: 'GothamPro-Medium';
+    color: #000;
+    padding-left: 0px;
+    color: #9754cb;
+    border: none;
+    text-decoration: none;
   }
 
   .job-info {
@@ -125,9 +172,46 @@
     color: #6327A0;
   }
 
+  .form-filter{
+    font-size: 1rem !important; 
+    font-family: 'GothamPro-Medium' !important; 
+    color: #9754cb !important; 
+    margin-right:10px !important;
+  }
+
+  #filter-form {
+    padding: 10px;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0;
+  }
+
   @media screen and (max-width: 842px){
     .container{
       width:95%;
       padding-top: 100px;
+    }
+
+    .job-title-container{
+      flex-direction: column;
+      height: auto;
+    }
+
+    .text-title {
+      font-size: 1.7rem!important;
+    }
+
+    img.company-picture {
+      width: 100px;  /* Adjust the size for smaller screens */
+      height: 100px; /* Adjust the size for smaller screens */
+    }
+
+    .company-info-wrapper {
+      padding-bottom: 0;
+      padding-left: 10px;
     }
   }

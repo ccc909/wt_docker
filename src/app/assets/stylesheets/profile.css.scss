@@ -18,6 +18,80 @@
     margin: 40px 15%;
   }
 
+  .user-applications {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .application-button {
+    color: #9754cb;
+    border: 0;
+    background-color: #fff;
+    font-size: 1.25rem;
+    font-family: "GothamPro";
+    padding-bottom: 10px;
+    text-align: left;
+  }
+
+  .application-content {
+    padding: 10px;
+  }
+
+  .application-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .application-row p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-family: "GothamPro";
+  }
+
+  .cancel-application-button {
+    display: flex;
+    width: fit-content;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 30px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    line-height: 16px;
+    text-align: center;
+    margin: 10px 0px;
+    text-decoration: none;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+  }
+  
+  .cancel-application-button:hover {
+    background-position: right;
+  }
+
+  .appliation-button-wraper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   .Availablecv {
     margin-bottom: 20px;
     display: flex;
@@ -25,9 +99,14 @@
     align-items: flex-start;
     flex-direction: column;
     width: 60%;
-
-
   }
+
+  .skill p {
+    font-size: 1.25rem;
+    font-family: "GothamPro-Medium";
+    margin: 10px 0;
+  }
+
   .left h1{
       font-family: "GothamPro-Medium";
   }
@@ -147,6 +226,14 @@
     text-decoration: none;
   }
 
+  .delete-button-experience{
+    @extend .delete-button;
+  }
+
+  .delete-button-education{
+    @extend .delete-button;
+  }
+
   #add-education-button, #add-experience-button  {
     font-size: 1.5rem;
   }
@@ -213,9 +300,10 @@
   .pickskills{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    width: max-content;
+    width: auto;
+    z-index: 0;
   }
 
   .custom-checkbox {
@@ -225,12 +313,144 @@
     
   }
   
+  .create-job-button{
+    margin-top: 20px;
+    height: 30px;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+    font-family: 'GothamPro';
+    color: #fff;
+    border: 0;
+    border-radius: 0 20px 20px 0;
+    padding: 5px 10px; 
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .job-button-company{
+    padding-top: 20px;
+    height: 30px;
+    transition: background-position .3s ease-out;
+    background-image: linear-gradient(to right,#9754cb ,#694d86 ,#533e68 ,#c4abde );
+    background-size: 300%;
+    background-position: left;
+    font-family: 'GothamPro';
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px; 
+    text-decoration: none;
+  }
+
   .action-button{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
   }
+
+  .form-class1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-class1 a {
+    font-size: 1.25rem;
+    font-family: "GothamPro-Medium";
+    text-decoration: none;
+    color: #9754cb;
+  }
+
+  #file-upload-button {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    line-height: 16px;
+    text-align: center;
+    margin: 0px 5px;
+    text-decoration: none;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+  }
+
+  #file-upload-button:hover {
+    background-position: right;
+  }
+
+  .ss-main {
+    width: 90%!important;
+  }
+  .ss-list {
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+  }
+
+  .ss-option {
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+    //background-color: #9754cb;
+  }
+
+  .ss-option:hover {
+    background-color: #9754cb!important;
+  }
+
+  .ss-disabled {
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+    background-color: #9754cb;
+  }
+
+  .ss-selected {
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+    background-color: #9754cb!important;
+  }
+
+  .ss-value {
+    background-color: #9754cb!important;
+    border-radius: 20px!important;
+    padding: 0 5px;
+  }  
+
+  .ss-value-text {
+    background-color: #9754cb!important;
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+    border-radius: 20px!important;
+  }
+
+  .ss-value-delete {
+    background-color: #9754cb!important;
+    font-family: 'GothamPro';
+    font-size: 1rem!important;
+    
+  }
+
+  .left h2 {
+    font-family: 'GothamPro-Medium';
+    font-size: 1.25rem;
+  }
+
+
 
 @media screen and (max-width: 842px){
 
@@ -276,8 +496,16 @@
         width: 95%;
     }
 
+    .user-applications {
+      width: 95%;
+    }
+
     .configureCV {
         width: 95%;
       }
+
+    .ss-main {
+      width: 80%!important;
+    }
     
 }

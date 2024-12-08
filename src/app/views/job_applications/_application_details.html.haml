@@ -1,66 +1,99 @@
 - user_info = @app.cv.user.user_information
-= user_info.first_name + " " + user_info.last_name
 
-CV details:
-//aici trebe css sa apara ca un cv sau cum vrei tu
+%div.application-details{id: @app.id}
 
+  %p.text-class
+    = user_info.first_name + " " + user_info.last_name
+    = link_to @app.liked ? "★" : "☆", like_cv_job_path(@app), method: :patch, remote: true, onclick: "likeToggle(this)", id: "like-button-#{@app.id}", class: "job-button-company"
 
-Matching by: 
-= matching_by(@app.job, @app.cv)+"%"
+  %p.job-info
+    Matching by: 
+    = matching_by(@app.job, @app.cv)+"%"
 
-%br
+  %p.text-class 
+    - @app.cv.skills.each do |skill|
+      = "#{skill.title} |"
 
-Skills:
-- @app.cv.skills.each do |skill|
-  = skill.title
-
-%br
-
-- if @app.cv.picture.attached?
-  %img{src: url_for(@app.cv.picture), alt: "CV Picture", style: "width: 100px; height: 100px;"}
-- else
-  %p No picture attached.
-
-%br
-
-//educatie
-- @app.cv.educations.each do |ed|
-  Institution:
-  = ed.institution
-  Specialization:
-  = ed.specialization
-  Degree:
-  = ed.degree
-  Started At:
-  = ed.started_at
-  - if ed.ongoing
-    Ongoing
+  //TO ADD CSS
+  - if @app.cv.picture.attached?
+    %img{src: url_for(@app.cv.picture), alt: "CV Picture", style: "width: 100px; height: 100px;"}
   - else
-    Finished At
-    = ed.finished_at
+    %p.job-info
+      No picture attached.
 
-%br
-//experienta
-- @app.cv.experiences.each do |exp|
-  Title:
-  = exp.title
-  Employer:
-  = exp.employer
-  Description:
-  = exp.description
-  Started At:
-  = exp.started_at
-  - if exp.ongoing
-    Ongoing
+  //educatie
+  %p.job-info
+    Education
+  - @app.cv.educations.each_with_index do |ed, i|
+    - i+=1
+    %p.text-class
+      = "#{i}. Institution: "
+      = ed.institution
+    %p.text-class
+      Specialization:
+      = ed.specialization
+    %p.text-class
+      Degree:
+      = ed.degree
+    %p.text-class
+      Started At:
+      = "#{ed.started_at}, "
+      - if ed.ongoing
+        Ongoing
+      - else
+        Finished At
+        = ed.finished_at
+    %br
+
+  //experienta
+  %p.job-info
+    Experience
+  - @app.cv.experiences.each_with_index do |exp, i|
+    - i+=1
+    %p.text-class
+      = "#{i}. #{exp.title}"
+    %p.text-class
+      Employer:
+      = exp.employer
+    %p.text-class
+      Description:
+      = exp.description
+    %p.text-class
+      Started At:
+      = "#{exp.started_at}, "
+      - if exp.ongoing
+        Ongoing
+      - else
+        Finished At
+        = exp.finished_at
+    %br
+  
+
+  - if @app.cv.pdfs.attached?
+    %p= "CV attached:"
+    - @app.cv.pdfs.each do |pdf|
+      %a{href: url_for(pdf), target: "_blank"}= pdf.blob.filename.to_s
   - else
-    Finished At
-    = exp.finished_at
+    %p No PDFs attached.
 
-%br
 
-- if @app.cv.pdfs.attached?
-  CV attached:
-  - @app.cv.pdfs.each do |pdf|
-    %a{href: url_for(pdf), target: "_blank"} PDF File
-- else
-  %p No PDFs attached.
+  %br
+  %br
+  %p.job-info
+    Contact
+  %p.text-class
+    = "#{user_info.city}, #{user_info.county}"
+  %p.text-class
+    = "#{user_info.sex}, #{time_ago_in_words(user_info.birthdate)}"
+  %p.text-class
+    = "phone: #{user_info.phone_number}"
+
+
+:javascript
+  function likeToggle(button) {
+    if (button.innerText === "☆") {
+      button.innerText = "★";
+    } else {
+      button.innerText = "☆";
+    }
+  }

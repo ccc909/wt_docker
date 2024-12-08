@@ -1,26 +1,31 @@
 %div.create-job-form
-  %h1 Post a new Job
+  %div.job-info
+    %h1 Post a new Job
 
-  = form_for @new_job, url: job_index_path, remote: true do |f|
+    = form_for @new_job, url: job_index_path, remote: true do |f|
 
-    .form-group
-      = f.label :title, "Title"
-      = f.text_field :title, required: true, class: 'form-control'
+      .form-group
+        %p.job-info
+          = f.label :title, "Title"
+        = f.text_field :title, required: true, class: 'form-control'
 
-    .form-group
-      = f.label :description, "Description"
-      = f.text_field :description, required: true, class: 'form-control'
+      .form-group
+        %p.job-info
+          = f.label :description, "Description"
+        = f.text_field :description, required: true, class: 'form-control'
 
-    .form-group
-      = f.label :title, "Skills required"
-      = f.select :skill_ids, options_for_select(@available_skills.all.map { |skill| [skill.title, skill.id] }, @new_job.skills.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
-      
-    .form-group
-      = f.label :title, "Location/s"
-      = f.select :location_ids, options_for_select(@available_locations.all.map { |location| [location.city, location.id] }, @new_job.locations.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
-      
-    .modal-buttons
-      = f.submit "Save", class: "btn btn-primary btn-wd btn-lg btn-round", onclick: "handleFormSubmission(this.form)"
+      .form-group
+        %p.job-info
+          = f.label :title, "Skills required"
+        = f.select :skill_ids, options_for_select(@available_skills.all.map { |skill| [skill.title, skill.id] }, @new_job.skills.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
+        
+      .form-group
+        %p.job-info
+          = f.label :title, "Location/s"
+        = f.select :location_ids, options_for_select(@available_locations.all.map { |location| [location.city, location.id] }, @new_job.locations.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
+        
+      .modal-buttons
+        = f.submit "Save", class: "edit-button", onclick: "handleFormSubmission(this.form)"
 
 
 = javascript_include_tag 'chosen-select'

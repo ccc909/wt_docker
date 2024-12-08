@@ -1,3 +1,27 @@
-%div.container
+%div.container{style: "display:block;"}
+  = form_tag feed_path, method: 'get', remote: true, id: 'filter-form' do
+    %div.pickskills
+      = label_tag 'filter_city', 'City', class: "form-filter"
+      = select_tag 'filter_city[]', options_from_collection_for_select(@locations.uniq, :id, :city), { multiple: true, id: 'multiple-cities' }
+    %div.pickskills
+      = label_tag :title, "Skills", class: "form-filter"
+      = select_tag 'filter_skills[]', options_from_collection_for_select(Skill.all, :id, :title), { multiple: true, id: 'multiple',style: 'z-index: 0 !important;' }
+    %div.filter-wrapper
+      = submit_tag 'Filter', class: 'edit-button'
+    
   %div.job-feed
     =render 'jobs'
+
+:javascript
+  document.addEventListener('DOMContentLoaded', function () {
+    var select = new SlimSelect({
+      select: '#multiple',
+      placeholder: 'Select Skills',
+      allowDeselect: true,
+    });
+    var select = new SlimSelect({
+      select: '#multiple-cities',
+      placeholder: 'Select City',
+      allowDeselect: true,
+    });
+  });

@@ -2,12 +2,13 @@
 - if is_user?(current_user.id) 
   - if current_user.cvs.map { |cv| cv.applications }.count > 0
     //applications class e folosit la js
-    %div.container.applications.left
-      = render 'user_applications'
+    %div.left#undernav
+      %div.user-applications.applications
+        = render 'user_applications'
 
 //user cvs and cv creator
 - if is_user?(current_user.id) 
-  %div.left#undernav
+  %div.left
     %div.Availablecv
       = render "cvs"
 
@@ -33,7 +34,7 @@
     
 // delete account
 %div.left
-  %h3 Not satisfied with our services?
+  %h2 Not satisfied with our services?
 
   = button_to "Delete my account", registration_path(current_user), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"login-button" 
 

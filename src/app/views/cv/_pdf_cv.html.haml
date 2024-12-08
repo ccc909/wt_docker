@@ -1,23 +1,24 @@
 %h1
   You can also upload a CV: 
 
-  %h4
+  %h1.text-class
     - if @cv.pdfs.any?
       Uploaded CVS
       %ul
       - @cv.pdfs.each do |pdf|
         -# leave form-class for live deletion
-        .form-class
+        .form-class1
           %li= link_to pdf.filename, rails_blob_path(pdf, disposition: "attachment")
-          =link_to "X", delete_pdf_cv_path(pdf.id, cv_id: @cv.id), class: "button", method: :delete, remote: true, onclick: "hideFormClass(this)"
+          = link_to "Delete", delete_pdf_cv_path(pdf.id, cv_id: @cv.id), class: "delete-button", method: :delete, remote: true, onclick: "hideFormClass(this)"
 
-  %h4
-    Upload CV
+      %h1.text-class
+        Upload CV
+
+
 = form_for @cv, url: pdf_upload_cv_path(cv_id: @cv.id) do |f|
   
   .form-group
-    = f.label :title, "PDF"
-    = f.file_field :pdfs, class:"form-control", multiple: true
+    = f.file_field :pdfs, class:"", multiple: true
 
   .modal-buttons
     = f.submit "Save", class: "login-button", onclick: "handleFormSubmission(this.form);"

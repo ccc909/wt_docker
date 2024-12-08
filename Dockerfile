@@ -22,16 +22,11 @@ RUN bundle install
 # Copy the rest of the application code into the image
 COPY src /src/
 
-# Copy the entrypoint script into the image and set permissions
-COPY entrypoint.sh /usr/bin/entrypoint.sh
-RUN chmod +x /usr/bin/entrypoint.sh
-
 # Precompile assets
 RUN bundle exec rake assets:precompile
 
 # Expose port 3000 to the Docker host
 EXPOSE 3000
-
 
 # Start the Rails server
 CMD ["rails", "server", "-b", "0.0.0.0"]

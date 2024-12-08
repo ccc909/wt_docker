@@ -1,13 +1,33 @@
-- if job.applications.any?
-  - applications = job.applications.order(viewed: :asc)
-  - count = 0
-  - applications.each do |app|
-    - count += 1
-    = link_to "Application #{count} #{app.viewed ? '(Viewed)' : '❗️'}", view_application_details_job_path(app.id), remote: true, onclick: "changeToViewed(this)"
-   
--else
-  No applications yet.
+%div.job-info
+  %div.job-application{id: job.id, style: "padding-top: 15px;"}
+    = link_to "Back", view_applications_job_path(job.id, back: true), remote: true, class: "job-button-company"
+    %br
 
+    - if @liked 
+      - applications = job.applications.where(liked: true)
+      - if applications.any?
+        - applications = applications.order(viewed: :asc)
+        - count = 0
+        - applications.each do |app|
+          - count += 1
+          = link_to "Application #{count}, #{app.cv.user.user_information.first_name} #{app.cv.user.user_information.last_name}", view_application_details_job_path(app.id), remote: true, onclick: "changeToViewed(this)", class: "purple-link"
+          %br
+      - else
+        %div.purple-link
+          No favorites
+
+    - elsif job.applications.any?
+      - applications = job.applications.order(viewed: :asc)
+      - count = 0
+      - applications.each do |app|
+        - count += 1
+        = link_to "Application #{count}, #{app.cv.user.user_information.first_name} #{app.cv.user.user_information.last_name} #{app.viewed ? '(Viewed)' : '❗️'}", view_application_details_job_path(app.id), remote: true, onclick: "changeToViewed(this)", class: "purple-link"
+        %br
+      
+    -else
+      %p.text-class
+        No applications yet.
+  
 
 :javascript
   function changeToViewed(link) {

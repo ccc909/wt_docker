@@ -15,7 +15,7 @@
 # First code block: Creating users, their information, skills, CVs, education, and experience
 
 20.times do |n|
-  @user = User.create(email: "user#{n + 1}@example.com", password: "password#{n + 1}")
+  @user = User.create(email: "user#{n + 1}@example.com", password: "password#{n + 1}", confirmed_at: DateTime.now())
   UserInformation.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -63,7 +63,7 @@ end
 
 # Second code block: Creating company information, jobs, and job applications
 20.times do |n|
-  @company_user = User.create(email: "company#{n + 1}@example.com", password: "password#{n + 1}", company: true)
+  @company_user = User.create(email: "company#{n + 1}@example.com", password: "password#{n + 1}", company: true, confirmed_at: DateTime.now())
   CompanyInformation.create(
     name: Faker::Company.name,
     country: Faker::Address.country,

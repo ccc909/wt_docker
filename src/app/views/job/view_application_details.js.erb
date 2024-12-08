@@ -1,1 +1,7 @@
-$(".details").html("<%= j render 'job_applications/application_details' %>");
+if ($('.application-details#<%= @app.id %>').length > 0) {
+  $('.application-details').not('.application-details#<%= @app.id %>').slideUp();
+  $('.application-details#<%= @app.id %>').slideDown();
+} else {
+  $('.application-details').not('.application-details#<%= @app.id %>').slideUp();
+  $('.job-application#<%= @app.job.id %>').append("<%= j render 'job_applications/application_details' %>");
+}
