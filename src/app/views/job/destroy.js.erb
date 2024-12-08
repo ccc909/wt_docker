@@ -1,0 +1,9 @@
+$(".available-jobs").html('<%= j render "jobs_list" %>')
+$('#flash-messages').html("Job Deleted");
+
+setTimeout(function() {
+  $("#flash-messages").fadeOut('slow', function() {
+    $(this).html(""); 
+    $(this).show();
+  });
+}, 2000);

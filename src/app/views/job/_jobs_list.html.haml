@@ -1,0 +1,4 @@
+%h1 Posted Jobs
+- if @jobs
+  - @jobs.each do |job|
+    = render 'job', job: job

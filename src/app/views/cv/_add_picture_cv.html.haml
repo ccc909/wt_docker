@@ -1,0 +1,19 @@
+-# display
+
+- if @cv.picture.present?
+  .image-class
+    = image_tag @cv.picture, size: "150x150"
+    = link_to "X", delete_picture_cv_path(cv_id: @cv.id), class: "", method: :delete, remote: true, onclick: "hideImageClass(this)"
+- else
+  = image_tag "https://www.computerhope.com/jargon/g/guest-user.png", size: "150x150"
+
+-# add button 
+= form_for @cv, url: upload_picture_cv_path(cv_id: @cv.id) do |f|
+  -# am fentat aparitia de buton borat choose file cu "+", numa ca trebe sa i dai clasa de buton
+  = f.label :picture, "+", class: "SPECIAL CLASS"
+  = f.file_field :picture, class: "form-control", accept: "image/*", style: "display: none;", onclick: "displaySaveButton(this)"
+
+  .modal-buttons
+    = f.submit "Save", class: "edit-button", onclick: "handleFormSubmission(this.form);"
+
+= javascript_include_tag 'cv'

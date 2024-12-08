@@ -1,0 +1,21 @@
+%div.wrapper-admin
+  %button.show_users Show All Users
+  %div.left1
+    %div.users{style: "display: none;"}
+      = render "users"
+
+
+  %button.show_companies Show Companies Pending Approval
+  %div.left1
+    %div.companies_pending{style: "display: none;"}
+      = render "companies_pending"
+
+
+:javascript
+  $(".show_users").click(function() {
+    $(".users").slideToggle();
+  });
+
+  $(".show_companies").click(function() {
+    $(".companies_pending").slideToggle()
+  });

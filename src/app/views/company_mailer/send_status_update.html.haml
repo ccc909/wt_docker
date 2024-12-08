@@ -1,0 +1,10 @@
+%h1 Submitted information has been reviewed
+
+- if @company.enabled
+  Your account has been enabled.
+  You can now publish jobs.
+- else
+  Reason of reject: 
+  = @company.company_information.status
+
+= link_to @company.company_information.name, profile_index_url

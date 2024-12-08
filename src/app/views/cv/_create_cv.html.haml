@@ -1,0 +1,9 @@
+%h1
+  Create a new CV? 
+  - if !current_user.cvs.any?
+    (Required)
+= form_for @new_cv, url: cv_index_path do |f|
+  .form-group
+    = f.text_field :title, required: true, class: 'form-control', placeholder: 'Add a title to your CV'
+  .modal-buttons
+    = f.submit "Create CV", class: "login-button"

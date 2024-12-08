@@ -1,0 +1,13 @@
+$(".available-jobs").html('<%= j render "jobs_list" %>')
+$('#flash-messages').html("Job Posted");
+
+$(".create-job-button").show();
+$(".create-job-form").hide();
+$(".close-button").hide();
+
+setTimeout(function() {
+  $("#flash-messages").fadeOut('slow', function() {
+    $(this).html(""); 
+    $(this).show();
+  });
+}, 2000);

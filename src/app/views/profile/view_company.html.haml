@@ -1,0 +1,15 @@
+%div.container
+  %div.job-feed
+    %div.text-title= @company.company_information.name
+    
+    = image_tag display_company_picture(@company), size: "150x150"  
+
+    = form_tag(view_company_profile_path, method: :get, remote: true, class: 'job-search-form') do
+      = text_field_tag :search, params[:search], placeholder: 'Search jobs'
+      = hidden_field_tag :user_id, @company.id
+      = submit_tag 'Search', class: "search-button", style: "margin-bottom: 0.7em;"
+
+    %div.job-information
+      = render 'company_jobs'
+      
+    = paginate @jobs, remote: true

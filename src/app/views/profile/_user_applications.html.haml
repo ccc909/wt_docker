@@ -1,0 +1,36 @@
+Your applications
+
+- @applications.each do |app|
+  %div{:class => "application-#{app.id}"}
+
+    %button{onclick: "toggleApplicationContent(#{app.id})"}="#{app.job.title} - #{app.job.user.company_information.name}"
+
+    %div.application-content{id: app.id, style: "display: none;"}
+      %br
+      Applied on:
+      = app.created_at.strftime('%Y-%m-%d')
+      %br
+      With CV:
+      = app.cv.title
+      %br
+      Status:
+      - if !app.viewed
+        Pending evaluation 
+        %br
+        //cancel-application-button class e folosit la js
+        = link_to "Cancel Application", cancel_application_profile_path(app.id), method: :delete, remote: true, class: "cancel-application-button", data: { app_id: app.id }
+      - else
+        Viewed
+
+= paginate @applications, remote: true
+
+:javascript
+  $(document).on('click', '.cancel-application-button', function(e) {
+    e.preventDefault();
+    var appId = $(this).data('app-id');
+    $('.application-' + appId).slideUp();
+  });
+
+  function toggleApplicationContent(id){
+    $(".application-content#"+id).slideToggle();
+  }

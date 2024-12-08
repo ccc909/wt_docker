@@ -1,0 +1,11 @@
+var show_button = $(".create-job-button").hide();
+var renderedForm = $("<%= j render 'create_job' %>");
+var closeButton = $("<button class='close-button'>Close</button>");
+
+closeButton.on('click', function() {
+  renderedForm.hide();
+  closeButton.hide();
+  show_button.show();
+});
+
+$(".create-job").html(renderedForm).append(closeButton);

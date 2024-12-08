@@ -1,0 +1,14 @@
+- if @companies.any?
+  - @companies.each do |company|
+    - if company.company_information.present? && company.company_information.status == "Pending verification"
+      %div.company-admin{id: company.id}
+        %div.company-view
+          %p
+            - info = company.company_information
+            = info.name
+
+          = link_to "View", show_company_information_path(id: company.id), remote: true
+
+        %div.view-company-information{id: "company-#{company.id}"}
+
+  = paginate @companies, remote: true, param_name: :company_page, id: "company_pagination"

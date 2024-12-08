@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  employer: MyString
+  description: MyString
+  started_at: 2023-10-14
+  finished_at: 2023-10-14
+  ongoing: false
+
+two:
+  title: MyString
+  employer: MyString
+  description: MyString
+  started_at: 2023-10-14
+  finished_at: 2023-10-14
+  ongoing: false

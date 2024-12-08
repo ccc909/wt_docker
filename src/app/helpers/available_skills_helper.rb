@@ -1,0 +1,2 @@
+module AvailableSkillsHelper
+end

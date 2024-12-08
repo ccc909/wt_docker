@@ -1,0 +1,17 @@
+%h1 Available Jobs
+
+%div.create-job
+= link_to "Post a new job", render_create_job_path(id: current_user.id), class: "create-job-button", remote: true
+
+
+%div.available-jobs
+  = render "jobs_list"
+
+//cu asta decizi unde sa apara apply-urile de job
+%div.applications
+
+
+//cu asta decizi unde sa apara detaliile la un apply
+%div.details
+
+= javascript_include_tag 'cv'

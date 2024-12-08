@@ -1,0 +1,41 @@
+// user job applications
+- if is_user?(current_user.id) 
+  - if current_user.cvs.map { |cv| cv.applications }.count > 0
+    //applications class e folosit la js
+    %div.container.applications.left
+      = render 'user_applications'
+
+//user cvs and cv creator
+- if is_user?(current_user.id) 
+  %div.left#undernav
+    %div.Availablecv
+      = render "cvs"
+
+    = render "cv/create_cv"
+
+// company interface
+%div.right
+  - if is_company?(current_user.id)
+    - if current_user.company_information.present?
+      = render 'company_information/company_picture'
+
+      = render 'company_information/edit_form'
+    - else
+      = render 'company_information/form'
+    - if !current_user.enabled
+      %h3.red= "Status: #{display_verified_status(current_user.id)}"
+      
+  - else 
+    - if current_user.user_information.present?
+      = render 'user_information/edit_form'
+    - else 
+      = render 'user_information/form'
+    
+// delete account
+%div.left
+  %h3 Not satisfied with our services?
+
+  = button_to "Delete my account", registration_path(current_user), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"login-button" 
+
+= javascript_include_tag 'cv'
+

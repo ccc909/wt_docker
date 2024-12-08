@@ -1,0 +1,37 @@
+
+= form_tag search_users_admin_path, method: :get, remote: true ,class: "search-form"do
+  = text_field_tag :search, params[:search], placeholder: "Search by name"
+  = submit_tag "Search", class: "button1"
+
+- if @users.any?
+  - @users.each do |user|
+    %div.user-info
+      - if user.user_information.present?
+        %p Name: #{user.user_information.first_name}
+      - elsif user.company_information.present?
+        %p Name: #{user.company_information.name}
+      - else
+        Name Missing
+      %p Email: #{user.email}
+      
+      - if user.company
+        %p{style: 'margin-bottom: 10px;'} Account type: company
+        = link_to "View", show_company_information_path(id: user.id), remote: true
+      - else
+        %p{style: 'margin-bottom: 10px;'} Account type: user
+
+      - if user.admin
+        = button_to "Take Admin Rights", update_admin_path(id: user.id), remote: true, method: :patch, class:'edit-button', onclick: 'updateButtonText(this)', style:'margin-bottom:10px; width: fit-content;'
+      - else
+        = button_to "Give Admin Rights", update_admin_path(id: user.id), remote: true, method: :patch, class:'edit-button', onclick: 'updateButtonText(this)', style:'margin-bottom:10px; width: fit-content;'
+      - if user.blocked
+        = button_to "Unblock User", block_user_path(id: user.id), method: :patch, remote: true, class:'edit-button', onclick: 'updateButtonText(this)', style:'margin-bottom:10px; width: fit-content;'
+      - else
+        = button_to "Block User", block_user_path(id: user.id), method: :patch, remote: true, class:'edit-button', onclick: 'updateButtonText(this)', style:'margin-bottom:10px; width: fit-content;'
+
+      %div.view-company-information{id: "company-#{user.id}"}
+
+
+  = paginate @users, remote: true, param_name: :user_page, id: "user_pagination"
+
+= javascript_include_tag 'admin'

@@ -1,0 +1,11 @@
+:scheduler:
+  :schedule:
+    user_recommendation_job:
+      cron: "* * * * *"
+      class: "UserRecommendationJob"
+      queue: default
+
+    company_job_applications:
+      cron: "* * * * *"
+      class: "CompanyJobApplications"
+      queue: default

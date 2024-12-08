@@ -1,0 +1,6 @@
+%h1 You got new applications
+
+- @jobs.each do |job|
+  - if job.applications.any?
+    = "#{job.title} has #{job.applications.count} applications!" 
+    %br

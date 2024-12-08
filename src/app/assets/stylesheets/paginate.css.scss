@@ -1,0 +1,39 @@
+.pure-g {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.pure-button {
+    font-family: "GothamPro-Medium";
+    margin: 2.5px;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 20px;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+    background-color: #6327A0;
+}
+
+.pure-button:hover {
+    background-position: right!important;
+}
+
+.pure-u-1-24 {
+    width: auto;
+}
+
+.pure-u-1-12 {
+    width: auto;
+}
+
+#first {
+    border-radius: 20px 10px 10px 20px;
+}
+
+#last {
+    border-radius: 10px 20px 20px 10px;
+}

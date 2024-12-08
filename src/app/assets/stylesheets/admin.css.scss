@@ -1,0 +1,222 @@
+.left1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    width: 40%;
+}
+
+.wrapper-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button-admin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#edit_company_information_1 {
+    width: 100%;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.users p {
+    font-size: 1.25rem;
+    font-family: 'GothamPro';
+    margin: 0;
+}
+
+.company-admin p {
+    font-size: 1.5rem;
+    font-family: 'GothamPro-Medium';
+    margin: 5px 0px;
+}
+
+#search {
+    height: 28px;
+    padding: 0px 10px;
+    border-radius:  20px 0 0 20px ;
+    border: 1px solid #e1eae7;
+    margin-top: 20px;
+}
+
+#search:focus-visible {
+    border: 1px solid #e1eae7!important;
+    outline: none;
+}
+
+.button1 {
+    margin-top: 20px;
+    height: 30px;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+    font-family: 'GothamPro';
+    color: #fff;
+    border: 0;
+    border-radius: 0 20px 20px 0;
+    padding: 5px 10px; 
+    font-size: 1rem;
+}
+
+.button1:hover {
+    background-position: right;
+}
+
+.companies_pending {
+    width: 100%;
+}
+
+.company-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.25rem;
+}
+
+.company-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    font-size: 1.25rem;
+}
+
+.view-company-information {
+    width: 100%;
+}
+
+.show_users {
+    width: 40%;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+    font-family: 'GothamPro-Medium';
+    color: #fff;
+    border: 0;
+    border-radius: 20px;
+    padding: 5px 10px; 
+    margin-bottom: 10px;
+    margin-top: 110px;
+}
+
+.show_users:hover {
+    background-position: right;
+}
+
+
+.show_companies {
+    width: 40%;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+    font-family: 'GothamPro-Medium';
+    color: #fff;
+    border: 0;
+    border-radius: 20px;
+    padding: 5px 10px; 
+    margin-bottom: 10px;
+}
+
+.show_companies:hover {
+    background-position: right;
+}
+
+.company-admin a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #9754cb;
+    font-family: 'GothamPro';
+    font-weight: 500;
+}
+
+.company-info {
+    
+    font-family: 'GothamPro';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.company-info p {
+    font-family: 'GothamPro';
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.edit_company_information {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control1{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    background: #eef5f3;
+    outline: 0;
+    border: none;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    border-radius: 20px 0 0 20px;
+    color: #88908e;
+    padding: 0 16px;
+    margin: 5px 0;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+  }
+
+  .form-control1:focus{
+    background: #fff !important;
+    border: 1px solid #e1eae7 !important;
+  }
+
+@media screen and (max-width: 842px){
+    
+    .left1 {
+        width: 85%;
+    }
+
+    .users {
+        width:95%;
+    }
+
+    .show_users {
+        width: 90%;
+        margin-top: 120px
+    }
+
+    .show_companies {
+        width: 90%;
+    }
+}

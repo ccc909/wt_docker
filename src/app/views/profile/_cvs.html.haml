@@ -1,0 +1,15 @@
+- if @cvs.present?
+  %h1 Available CVs
+  - @cvs.each_with_index do |cv, index|
+    - if index.even? # Apply class for even indices
+      %div.edit-cv.same-line
+        %span.CVs= cv.title
+        %div.action-button
+          = link_to "Edit CV", configure_cv_cv_path(cv.id), class: "edit-button"
+          = link_to "Delete CV", cv_path(cv.id), remote: true, method: :delete, class: "edit-button",  data: { confirm: 'Are you sure you want to delete this CV?' }
+    - else # Apply class for odd indices
+      %div.edit-cv.new-line
+        %span.CVs= cv.title
+        %div.action-button
+          = link_to "Edit CV", configure_cv_cv_path(cv.id), class: "edit-button"
+          = link_to "Delete CV", cv_path(cv.id), remote: true, method: :delete, class: "edit-button", data: { confirm: 'Are you sure you want to delete this CV?' }

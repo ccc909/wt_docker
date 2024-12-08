@@ -1,0 +1,5 @@
+if ($(".view-company-information#company-<%= @id %>").is(':empty')) {
+  $(".view-company-information#company-<%= @id %>").html("<%= j render 'company_info', info: @company_information %>").hide().slideDown();
+} else {
+  $(".view-company-information#company-<%= @id %>").slideToggle();
+}

@@ -1,0 +1,24 @@
+- if !@locations.empty?
+  = form_tag feed_path, method: 'get', remote: true, id: 'filter-form' do
+    %p.form-group
+      = label_tag 'filter_city', 'Filter by City:'
+      = select_tag 'filter_city', options_for_select(@locations.pluck(:city).uniq, params[:filter_city]), prompt: 'All Cities', class: 'form-control'
+    = submit_tag 'Filter', class: 'edit-button button-padding'
+
+
+- @jobs.each do |job|
+  %div.job-container
+    %ul
+      %li.job-button= link_to job.title, view_job_path(job), remote: true, class: "job-link"
+      
+      //image
+      = image_tag display_company_picture(job.user), size: "50x50"
+
+      //date
+      = job.created_at.strftime('%d-%b-%y')
+
+      - if user_signed_in? && is_user?(current_user.id)
+        %p Matching by: #{matching_percentage(job)}% 
+    %div.job-info{id: job.id , style: 'display: none;' }
+      
+= paginate @jobs, remote: true

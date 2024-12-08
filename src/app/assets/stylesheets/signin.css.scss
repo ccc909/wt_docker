@@ -1,0 +1,355 @@
+.ext{
+    display: block;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  
+.login-wrapper{
+    width: 70%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0;
+}
+.content-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+  .content-wrapper{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: 0 0;
+  }
+
+  .login-container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+  .login-container h2 {
+    text-align: center;
+    margin: 5px 0;
+    font-family: "GothamPro";
+    font-size: 1.25rem;
+
+  }
+
+  .login-container h1 {
+    text-align: center;
+    font-size: 3.25rem;
+    margin-bottom: 20px;
+    font-family: 'GothamPro-Medium',Arial;
+  }
+  
+  .form-field {
+    margin-bottom: 15px;
+    
+  }
+
+  .form-field2 {
+    margin-bottom: 5px;
+    
+  }
+  .new_user{
+    width: 100%;
+    padding: 10px;
+    max-width: 460px;
+    margin-top: 20px;
+  }
+
+  .input-field {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    background: #eef5f3;
+    outline: 0;
+    border: none;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    border-radius: 20px;
+    color: #88908e;
+    padding: 0 16px;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+  }
+
+  .input-field:focus{
+    background: #fff !important;
+    border: 1px solid #e1eae7 !important;
+  }
+
+  .flash-alert{
+    font-family: 'GothamPro-Medium',Arial;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 5px;
+    
+  }
+
+  .remember-me {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .remember {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .custom-checkbox:checked {
+    background-color: #900C3F!important;
+}
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'GothamPro-Medium',Arial;
+    color: #88908e;
+  }
+
+  .checkbox p{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'GothamPro-Medium',Arial;
+    color: #88908e;
+    margin: 0;
+  }
+
+  .remember-me a{
+    font-family: 'GothamPro-Medium',Arial;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #88908e;
+    justify-self: flex-end;
+  }
+
+  .form-actions {
+    text-align: center;
+  }
+  
+  .login-button {
+    width: 235px;
+    height: 54px;
+    //background-color: #9754cb;
+    border-radius: 30px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    line-height: 16px;
+    text-align: center;
+    margin: 32px 0;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+  }
+  
+  
+
+  .login-button:hover {
+    background-position: right;
+  }
+
+  .image-wrapper{
+    background-image: linear-gradient(253deg,#6327A0 0,#9754cb 100%);
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    overflow: hidden;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }                       
+
+  .container-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-wrapper h2{
+    color: #fff;
+    font-family: 'GothamPro-Medium';
+    font-size: 3.25rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .container-wrapper p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-family: 'GothamPro';
+    font-size: 1.375rem;
+    padding: 0 20px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .signin-button {
+    display: flex;
+    width: 235px;
+    height: 54px;
+    background-color: #fff;
+    border-radius: 30px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #9754cb;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    line-height: 16px;
+    text-align: center;
+    margin: 32px 0;
+    -webkit-transition: .3s;
+    transition: .3s;
+    text-decoration: none;
+  }
+
+  .signin-button:hover {
+    -webkit-transition: .3s;
+    transition: .3s;
+    color: #6327A0;
+  }
+  
+  .page-logo {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 140px;
+    height: 45px;
+    cursor: pointer;
+    z-index: 30;
+  }
+
+  @media screen and (max-width: 640px) {
+
+    .wrapper{
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .container-wrapper  h2 {
+      font-size: 2.5rem;
+    }
+
+    .content-wrapper{
+      width: 85%;
+    }
+
+    .login-container h1{
+      font-size: 2rem;
+    }
+
+    .login-container h2 {
+      font-weight: 300;
+    }
+
+    .label{
+      font-size: 13px;
+    }
+
+    .remember-me a{
+      font-size: 13px;
+    }
+
+    .form-field2{
+      margin-bottom: 10px;
+    }
+
+   .image-wrapper{
+    width: 100%;
+    padding: 20px 0;
+    height: fit-content;
+    position: relative; /* Adjust the position to relative */
+    top: 0;
+   }
+
+  }

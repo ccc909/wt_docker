@@ -1,0 +1,7 @@
+<% if @user_page.present? %>
+  $('.users').html('<%= j render "users" %>');
+  $('#user_pagination').html('<%= j paginate @users, remote: true, page_param: "user_page" %>');
+<% elsif @company_page.present? %>
+  $(".companies_pending").html("<%= j render 'companies_pending' %>");
+  $('#company_pagination').html('<%= j paginate @companies, remote: true, page_param: "company_page" %>');
+<% end %>

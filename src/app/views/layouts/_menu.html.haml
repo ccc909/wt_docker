@@ -1,0 +1,24 @@
+%nav.menu#menu
+  %div.search 
+    = form_tag feed_path, method: :get, class: "search-form" do
+      = text_field_tag :title, params[:title], placeholder: "Search jobs", class: "inputfield"
+      = submit_tag "🔍", class: "search-button"
+  %div.buttons
+    - if user_signed_in?
+      = link_to "Feed", feed_path, class: "button#{" signinbutton" if controller_name == 'home'}"
+      - if is_company_enabled?(current_user.id)
+        = link_to "Jobs", job_index_path, class: "button#{" signinbutton" if controller_name == 'job'}"
+      = link_to "Profile", profile_index_path, class: "button#{" signinbutton" if controller_name == 'profile'}"
+      - if is_admin?(current_user.id)
+        = link_to "Skills", skill_index_path, class: "button#{" signinbutton" if controller_name == 'skill'}"
+        = link_to "Admin", admin_index_path, class: "button#{" signinbutton" if controller_name == 'admin'}"
+      = link_to "Log Out", destroy_user_session_path, class: "button#{" signinbutton" if controller_name == 'log_out'}", method: :delete 
+    - else
+      = link_to "Log in", new_user_session_path, class: "signinbutton"
+
+
+
+
+
+  
+      

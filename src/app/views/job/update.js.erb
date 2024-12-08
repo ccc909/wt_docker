@@ -1,0 +1,9 @@
+$("#edit_job_<%= @job.id %>").replaceWith("<%= j render 'job', job: @job %>")
+$('#flash-messages').html("Job Updated");
+
+setTimeout(function() {
+  $("#flash-messages").fadeOut('slow', function() {
+    $(this).html(""); 
+    $(this).show();
+  });
+}, 2000);

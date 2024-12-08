@@ -1,0 +1,28 @@
+%div.company-info
+  %p Name: #{info.name}
+  %p Country: #{info.country}
+  %p Adress: #{info.address}
+  %p Phone Number: #{info.phone_number}
+  %p Request correction / Reason for deny:
+  = form_for info, url: add_verification_status_path(id: info.id), remote: true do |f|
+
+    .form-group
+    = f.text_field :status, placeholder: f.object.status, required: true, class: 'form-control1'
+
+
+
+    .modal-buttons
+      = f.submit "Submit", class: "button1", onclick: "hideReviewed(#{info.user.id})", style: "margin: 0;"
+  %br
+  - if !info.user.enabled
+    Approve and enable account if valid:
+    %div.button-admin
+      = button_to "Approve", enable_company_path(id: info.id), remote: true, onclick: "hideReviewed(#{info.user.id})", method: :patch, class:"login-button"
+
+
+:javascript
+  function hideReviewed(companyId) {
+    var selector = ".company-admin#" + companyId;
+    $(selector).hide();
+    $(".right").slideUp();
+  }

@@ -1,0 +1,14 @@
+if ($("#edit-experience").length) {
+  // #edit-experience exists, replace it
+  var reRenderEditExperiencePartial = "<%= j render 'edit_experience_form' %>";
+  $("#edit-experience").replaceWith(reRenderEditExperiencePartial);
+  
+} else {
+  var reRenderPartial = "<%= j render 'edit_experience_form' %>";
+  $("#experience-title").append(reRenderPartial);
+}
+
+// re render the create form and hide it until button to create a new one is pressed
+$(".close-button-experience").hide();
+$("#experience").hide();
+$("#add-experience-button").fadeIn(400);

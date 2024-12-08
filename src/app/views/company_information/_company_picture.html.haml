@@ -1,0 +1,21 @@
+//da replace la cssu asta cu ce vrei sa nu fie cu style aici
+%div.replace{style: "margin-top: 50px;"}
+  Add your logo
+
+  - if @company_information.company_picture.present?
+    .image-class
+      = image_tag @company_information.company_picture, size: "150x150"
+      = link_to "X", delete_picture_company_information_path(@company_information.id), class:"", method: :delete, remote: true, onclick: "hideImageClass(this)"
+  - else
+    = image_tag "https://img.freepik.com/premium-vector/briefcase-isolated-background-vector-illustration-flat-design-attache-case-diplomat-is-accessory-business-people_153097-721.jpg", size: "150x150"
+
+  -# add button 
+  = form_for @company_information, url: add_picture_company_information_path(@company_information.id) do |f|
+    -# am fentat aparitia de buton borat choose file cu "+", numa ca trebe sa i dai clasa de buton
+    = f.label :company_picture, "+", class: "SPECIAL CLASS"
+    = f.file_field :company_picture, class: "form-control", accept: "image/*", style: "display: none;", onclick: "displaySaveButton(this)"
+
+    .modal-buttons
+      = f.submit "Save", class: "edit-button", onclick: "handleFormSubmission(this.form);"
+
+= javascript_include_tag 'cv'

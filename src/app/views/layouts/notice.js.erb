@@ -1,0 +1,13 @@
+$("#flash-messages").append("<%= j @message %>").show();
+
+<% if @job.present? && (@job_info = render('job/view', job: @job)) %>
+  $(".job-info#<%= @job.id %>").html("<%= j @job_info %>").show();
+<% end %>
+
+setTimeout(function() {
+  $("#flash-messages").fadeOut('slow', function() {
+    $(this).empty();
+  });
+}, 2000);
+
+

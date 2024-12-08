@@ -1,0 +1,15 @@
+- if job.applications.any?
+  - applications = job.applications.order(viewed: :asc)
+  - count = 0
+  - applications.each do |app|
+    - count += 1
+    = link_to "Application #{count} #{app.viewed ? '(Viewed)' : '❗️'}", view_application_details_job_path(app.id), remote: true, onclick: "changeToViewed(this)"
+   
+-else
+  No applications yet.
+
+
+:javascript
+  function changeToViewed(link) {
+    link.innerHTML = link.innerHTML.replace('❗️', '(Viewed)');
+  }

@@ -1,0 +1,75 @@
+- company = CompanyInformation.find_by(user_id: job.user_id)
+- company_name = company.name
+
+- applied = false
+- @application = nil
+- if user_signed_in? && is_user?(current_user.id)
+  - current_user.cvs.each do |cv|
+    - if Application.find_by(cv_id: cv.id, job_id: job.id).present?
+      - @application = Application.find_by(cv_id: cv.id, job_id: job.id)
+      - applied = true
+      - break
+
+%h2
+  by: 
+  = link_to company_name, view_company_profile_path(id: company.id), class: 'job-link'
+
+//date for jobs on company profile
+- if controller_name == 'profile'
+  = job.created_at.strftime('%d-%b-%y')
+
+%p.job-info
+  Description:
+%p.text-class
+  = job.description
+
+%p.job-info
+  Skills required:
+  - if job.skills.empty?
+    No skills required
+  - job.skills.each do |skill|
+    %li.text-class
+      = skill.title
+
+%p.job-info
+  - if !job.locations.empty?
+    Location:
+    - job.locations.each do |loc|
+      %li.text-class
+        = loc.city
+
+- if user_signed_in? && is_user?(current_user.id) && !is_admin?(current_user.id)
+  
+  - if applied == true && @application.viewed == false
+    = link_to "Cancel Application", cancel_application_profile_path(@application.id), method: :delete, remote: true, class: "edit-button", style: "width: fit-content; padding:0 10px;" 
+  
+  - elsif applied == true && @application.viewed == true
+    %p.job-info Application viewed
+
+  - elsif applied == false
+    %button.apply-button{ style: "width: fit-content; padding: 0 15px;", onclick: "toggleChooseCV(this);" } Apply
+    %div.choose-cv{style: 'display: none;'}
+      - if current_user.cvs.any? && current_user.user_information.present?
+        Choose CV
+        - current_user.cvs.each do |cv|
+          = button_to cv.title, apply_to_job_profile_path(job_id: job.id, cv_id: cv.id), class: 'cv-select', remote: true
+      - else
+        = link_to "Add Cv & Contact Info", profile_index_path
+
+- elsif user_signed_in? && is_admin?(current_user.id) #if admin be able to delete post
+  = link_to "Delete Job", job_path(job), method: :delete, data: {confirm: 'Are you sure you want to delete this job?'}, class:"admin-delete"
+
+- elsif !user_signed_in?
+  = button_to "Register to Apply", new_user_session_path, class: "edit-button", style: "width: fit-content; padding: 0 15px;" 
+  
+
+
+:javascript
+  function toggleChooseCV(button) {
+      $(button).next('.choose-cv').slideToggle();
+  }
+
+  
+
+
+

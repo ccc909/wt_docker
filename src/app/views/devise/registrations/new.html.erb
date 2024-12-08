@@ -1,0 +1,60 @@
+<div class="ext">  
+  <div class="wrapper">
+    <div class="login-wrapper">
+      <div class="content-wrapper">
+        <div class="login-container">
+          <h1>Create Your Free Account</h1>
+
+          <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+            
+
+            <div class="form-field">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field",placeholder:"Email" %>
+            </div>
+
+            <div class="form-field">
+              <%= f.password_field :password, autocomplete: "new-password", class: "input-field",placeholder:"Password (min. 6 characters)" %>
+            </div>
+
+            <div class="form-field">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field",placeholder:"Confirm Password" %>
+            </div>
+
+            <%= render "devise/shared/error_messages", resource: resource %>
+            
+            <div class="form-field">
+            <div class="form-field remember-me">
+              <div class="checkbox"?
+              <%= f.check_box :company %>
+                <p>Are you an employer?</p>
+                </div>
+                </div>
+            </div>  
+            
+
+            <div class="form-actions">
+              <%= f.submit "Sign up",class: "login-button" %>
+            </div>
+          <% end %>
+
+         <!-- <%= render "devise/shared/links" %> --!>
+
+          </div>
+      </div>
+    </div>
+    <div class="image-wrapper">
+      <div class="container-wrapper">
+        <h2>Already a member?</h2>
+        <p>Sign in and continue <br> where you left off!</p>
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Sign in", new_session_path(resource_name), class: "signin-button" %><br />
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-logo"</div>
+
+</div> 

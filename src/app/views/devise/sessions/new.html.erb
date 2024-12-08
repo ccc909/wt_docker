@@ -1,0 +1,62 @@
+<div class="ext">  
+  <div class="wrapper">
+    <div class="login-wrapper">
+      <div class="content-wrapper">
+        <div class="login-container">
+          <h1>Login to Your Account</h1>
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-field">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field", placeholder:"Email" %>
+            </div>
+
+            <div class="form-field2">
+              <%= f.password_field :password, autocomplete: "current-password", class: "input-field", placeholder:"Password" %>
+            </div>
+
+                <% flash.each do |key, value| %>
+                  <div class="flash flash-<%= key %>">
+                    <%= value %>
+                  </div>
+                <% end %>
+              
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-field remember-me">
+              <div class="checkbox"?
+                <%= f.check_box :remember_me, class: "custom-checkbox"  %>
+                <%= f.label :remember_me, class: 'label' %>
+              </div>
+                <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+              </div>
+            <% end %>
+
+            <div class="form-actions">
+              <%= f.submit "Sign in", class: "login-button" %>
+            </div>
+          <% end %>
+
+          <!--- <%= render "devise/shared/links" %> -->
+
+        </div>
+      </div>
+    </div>
+    <div class="image-wrapper">
+      <div class="container-wrapper">
+        <h2>New here?</h2>
+        <p>Sign up and discover a great <br> amount of new opportunities!</p>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "signin-button" %><br />
+      <% end %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-logo"</div>
+
+</div>  
+
+
+

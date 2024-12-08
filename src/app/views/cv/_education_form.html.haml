@@ -1,0 +1,38 @@
+%div#education
+  %h1 
+    Add Education:
+  = form_for @education, url: create_education_cv_path(cv_id: @cv.id), id: 'edit-education', remote: true do |f|
+
+    .form-group
+      = f.label :institution, "Institution name", class: 'form-label'
+      = f.text_field :institution, required: true, class: 'form-control'
+    
+    .form-group
+      = f.label :specialization, "Specialization name", class: 'form-label'
+      = f.text_field :specialization, required: true, class: 'form-control'
+
+    .form-group
+      = f.label :degree, "Degree", class: 'form-label'
+      = f.select :degree, ["Bachelor", "Master", "Doctoral"], { include_blank: "Select a degree" }, required: true, class: 'form-control'
+
+    .form-group
+      = f.label :started_at, "Started at", class: 'form-label'
+      = f.date_field :started_at, required: true, class: 'form-control', id: "education-started-at"
+
+    .form-group
+      = f.label :finished_at, "Finished at", class: 'form-label'
+      = f.date_field :finished_at, class: 'form-control', id: "education-finished-at"
+    -# keep the id for started at and finished at, used at comparing dates (finished_at > started_at)
+    .checkbox
+      = f.check_box :ongoing, class: 'custom-checkbox', onchange: "disableFinishDate(this)"
+      = f.label :ongoing, "Ongoing"
+      
+
+    .modal-buttons
+      = f.submit "Save", class: "login-button", onclick: "handleFormSubmission(this.form)"
+
+= javascript_include_tag 'cv'
+
+
+
+

@@ -1,0 +1,25 @@
+= form_for @job, url: job_path(id: @job.id), remote: true, class: "edit-job-#{@job.id}" do |f|
+  %h1 Edit Job
+
+  .form-group
+    = f.label :title, "Title"
+    = f.text_field :title, required: true, class: 'form-control', value: @job.title
+
+  .form-group
+    = f.label :description, "Description"
+    = f.text_field :description, required: true, class: 'form-control', value: @job.description
+
+  .form-group
+    = f.label :title, "Skills required"
+    = f.select :skill_ids, options_for_select(@available_skills.all.map { |skill| [skill.title, skill.id] }, @job.skills.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
+    
+  .form-group
+    = f.label :title, "Location/s"
+    = f.select :location_ids, options_for_select(@available_locations.all.map { |location| [location.city, location.id] }, @job.locations.pluck(:id)), { include_blank: true }, { class: 'chosen-select', multiple: true }
+    
+  .modal-buttons
+    = f.submit "Save", class: "btn btn-primary btn-wd btn-lg btn-round", onclick: "handleFormSubmission(this.form)"
+
+
+
+= javascript_include_tag 'chosen-select'

@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    align-self: center;
+    width: 60%;
+    padding-top: 70px;
+  }
+  
+  .job-feed {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .job-feed h1 {
+    font-size: 1.25rem;
+    font-family: 'GothamPro';
+    color: #000;
+  }
+
+  .job-feed p {
+    font-size: 1rem;
+    font-family: 'GothamPro-Medium';
+    color: #000;
+    padding-left: 0px;
+    color:#9754cb;
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+
+  .job-link{
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: 'GothamPro-Medium';
+    color: #000;
+
+  }
+
+  .job-container{
+    background-color: #F5F5F5;
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+
+  ul {
+    list-style-type: none; 
+    padding: 10px 15px;
+    margin: 0;
+  }
+
+  .job-info {
+    flex: 1;
+    padding: 10px 15px;
+    padding-top: 0;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .job-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .job-info h2 {
+    font-size: 1.25rem;
+    font-family: 'GothamPro';
+  }
+
+  .job-info p {
+    font-size: 1rem;
+    font-family: 'GothamPro-Medium';
+    color: #000;
+    padding-left: 0px;
+    color:#9754cb;
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+
+  .apply-button {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'GothamPro-Medium',Arial;
+    font-size: .875rem;
+    line-height: 16px;
+    text-align: center;
+    margin: 0px 5px;
+    text-decoration: none;
+    transition: background-position .3s ease-in;
+    background-image: linear-gradient(to right,#9754cb ,#6327A0 ,#6327A0 ,#6327A0 );
+    background-size: 300%;
+    background-position: left;
+  }
+  
+  .apply-button:hover {
+    background-position: right;
+  }
+
+  .button-padding {
+    margin-bottom: 15px !important;
+  }
+
+  .admin-delete{
+    font-family: "GothamPro-Medium";
+    font-size: 1.5rem;
+    color: #9754cb;
+    text-decoration: none;
+    transition: .5s;
+  }
+
+  .admin-delete:hover {
+    color: #6327A0;
+  }
+
+  @media screen and (max-width: 842px){
+    .container{
+      width:95%;
+      padding-top: 100px;
+    }
+  }
